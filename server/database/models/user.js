@@ -51,6 +51,11 @@ module.exports = (sequelize, DataTypes) => {
           user.password = await bcrypt.hash(user.password, salt);
         },
       },
+      instanceMethods: {
+        validatePassword: async (password) => {
+          return bcrypt.compare(password, this.password);
+        },
+      },
     }
   );
   return User;
