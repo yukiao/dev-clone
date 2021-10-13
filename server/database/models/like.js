@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       Like.belongsTo(models.User, {
         foreignKey: "userId",
       });
-      Like.belongsTo(model.Post, {
+      Like.belongsTo(models.Post, {
         foreignKey: "postId",
       });
     }
