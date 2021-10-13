@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Like.init(
     {
-      nope: DataTypes.STRING,
       userId: {
         type: DataTypes.UUID,
         allowNull: false,
