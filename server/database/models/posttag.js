@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   PostTag.init(
     {
-      tagId: { type: DataTypes.UUID, primaryKey: true },
-      postId: { type: DataTypes.UUID, primaryKey: true },
+      tagId: { type: DataTypes.UUID, primaryKey: true, allowNull: false },
+      postId: { type: DataTypes.UUID, primaryKey: true, allowNull: false },
     },
     {
       sequelize,
