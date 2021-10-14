@@ -1,6 +1,7 @@
 "use strict";
 const bcrypt = require("bcryptjs");
 const { Model } = require("sequelize");
+const { nullValueMessage } = require("../../helpers/dbValidationError");
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -27,19 +28,39 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: nullValueMessage("name"),
+          },
+        },
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: nullValueMessage("email"),
+          },
+        },
       },
       profilePicture: DataTypes.STRING,
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: nullValueMessage("username"),
+          },
+        },
       },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: nullValueMessage("password"),
+          },
+        },
       },
     },
     {
