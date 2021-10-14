@@ -8,6 +8,11 @@ const { notFound, errorHandler } = require("./helpers/errorMiddleware");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+if (process.env.NODE_ENV === "development") {
+  const morgan = require("morgan");
+  app.use(morgan("dev"));
+}
+
 app.use("/api", userRoute);
 
 app.use(notFound);
