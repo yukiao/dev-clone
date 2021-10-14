@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Like);
       User.hasMany(models.Comment);
     }
+
+    async validatePassword(password) {
+      return await bcrypt.compare(password, this.password);
+    }
   }
   User.init(
     {
@@ -72,11 +76,11 @@ module.exports = (sequelize, DataTypes) => {
           user.password = await bcrypt.hash(user.password, salt);
         },
       },
-      instanceMethods: {
-        validatePassword: async (password) => {
-          return await bcrypt.compare(password, this.password);
-        },
-      },
+      // instanceMethods: {
+      //   validatePassword: async (password) => {
+      //     return await bcrypt.compare(password, this.password);
+      //   },
+      // },
     }
   );
   return User;
