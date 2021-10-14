@@ -1,11 +1,10 @@
 const router = require("express").Router();
 const { Sequelize, User } = require("../database/models");
-const { Op } = Sequelize;
+const { Op, ValidationError } = Sequelize;
 const { SUCCESS } = require("../helpers/const");
 
 router.post("/login", async (req, res, next) => {
   try {
-    console.log(req.body);
     const userData = req.body;
     const isExist = await User.findOne({
       where: {
@@ -27,7 +26,7 @@ router.post("/login", async (req, res, next) => {
       },
     });
   } catch (e) {
-    if (e.name === "SequelizeValidationError") {
+    if (e instanceof ValidationError) {
       res.status(400);
     }
     next(e);
