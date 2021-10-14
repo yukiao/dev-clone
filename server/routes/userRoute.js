@@ -1,9 +1,11 @@
 const router = require("express").Router();
+const passport = require("../config/passportConfig");
 const { Sequelize, User } = require("../database/models");
 const { Op, ValidationError } = Sequelize;
 const { SUCCESS } = require("../helpers/const");
+const isAuthenticated = require("../helpers/authMiddleware");
 
-router.post("/login", async (req, res, next) => {
+router.post("/signup", async (req, res, next) => {
   try {
     const userData = req.body;
     const isExist = await User.findOne({
@@ -31,6 +33,13 @@ router.post("/login", async (req, res, next) => {
     }
     next(e);
   }
+});
+
+router.post("/login", passport.authenticate("local"), function (req, res) {
+  res.json({
+    status: SUCCESS,
+    data: {},
+  });
 });
 
 module.exports = router;
