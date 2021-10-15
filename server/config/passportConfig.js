@@ -2,23 +2,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const { User } = require("../database/models");
 
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await User.findOne({ where: { id } });
-    if (!user) {
-      done(null, false, { message: "Invalid account" });
-    } else {
-      done(null, user);
-    }
-  } catch (e) {
-    done(e, false, { message: e.message });
-  }
-});
-
 passport.use(
   new LocalStrategy(
     {
@@ -43,5 +26,20 @@ passport.use(
     }
   )
 );
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
 
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findOne({ where: { id } });
+    if (!user) {
+      done(null, false, { message: "Invalid account" });
+    } else {
+      done(null, user);
+    }
+  } catch (e) {
+    done(e, false, { message: e.message });
+  }
+});
 module.exports = passport;
