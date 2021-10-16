@@ -6,7 +6,7 @@ const { SUCCESS } = require("../helpers/const");
 
 /**
  * @description Route for register new user
- * @route /api/signup
+ * @route /api/user/signup
  * @access public
  */
 router.post("/signup", async (req, res, next) => {
@@ -41,7 +41,7 @@ router.post("/signup", async (req, res, next) => {
 
 /**
  * @description Route for login
- * @route /api/login
+ * @route /api/user/login
  * @access public
  */
 router.post("/login", function (req, res, next) {
@@ -64,7 +64,7 @@ router.post("/login", function (req, res, next) {
 
 /**
  * @description Route for checking if user is currently login
- * @route /api/isLogin
+ * @route /api/user/isLogin
  * @access public
  */
 router.get("/isLogin", (req, res) => {
@@ -78,5 +78,22 @@ router.get("/isLogin", (req, res) => {
   const error = new Error("Unauthorise");
   res.status(401);
   next(error);
+});
+
+router.delete("/logout", (req, res, next) => {
+  try {
+    req.logOut();
+    return res.json({
+      status: SUCCESS,
+      data: {
+        msg: "Successfully logout",
+      },
+    });
+  } catch (e) {
+    if (e instanceof ValidationError) {
+      res.status(400);
+    }
+    next(e);
+  }
 });
 module.exports = router;

@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-const { userRoute } = require("./routes");
+const { userRoute, postRoute } = require("./routes");
 const { notFound, errorHandler } = require("./helpers/errorMiddleware");
 const session = require("cookie-session");
 
@@ -26,8 +26,8 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use("/api", userRoute);
-
+app.use("/api/users", userRoute);
+app.use("/api/posts", postRoute);
 app.use(notFound);
 app.use(errorHandler);
 
