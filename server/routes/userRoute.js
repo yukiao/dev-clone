@@ -3,8 +3,12 @@ const passport = require("../config/passportConfig");
 const { Sequelize, User } = require("../database/models");
 const { Op, ValidationError } = Sequelize;
 const { SUCCESS } = require("../helpers/const");
-const isAuthenticated = require("../helpers/authMiddleware");
 
+/**
+ * @description Route for register new user
+ * @route /api/signup
+ * @access public
+ */
 router.post("/signup", async (req, res, next) => {
   try {
     const userData = req.body;
@@ -35,6 +39,11 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
+/**
+ * @description Route for login
+ * @route /api/login
+ * @access public
+ */
 router.post("/login", function (req, res, next) {
   passport.authenticate("local", function (err, user, info) {
     if (err) return err;
@@ -53,4 +62,21 @@ router.post("/login", function (req, res, next) {
   })(req, res, next);
 });
 
+/**
+ * @description Route for checking if user is currently login
+ * @route /api/isLogin
+ * @access public
+ */
+router.get("/isLogin", (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.json({
+      status: SUCCESS,
+      data: {},
+    });
+  }
+
+  const error = new Error("Unauthorise");
+  res.status(401);
+  next(error);
+});
 module.exports = router;
