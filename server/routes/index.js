@@ -1,7 +1,22 @@
-const userRoute = require("./userRoute");
-const postRoute = require("./postRoute");
+const fs = require("fs");
+const path = require("path");
 
-module.exports = {
-  userRoute,
-  postRoute,
-};
+const basename = path.basename(__filename);
+
+const routes = {};
+
+fs.readdirSync(__dirname)
+  .filter((file) => {
+    return (
+      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
+    );
+  })
+  .forEach((file) => {
+    const route = require(path.join(__dirname, file));
+    const name = file.substring(0, file.length - 3);
+    routes[name] = route;
+  });
+
+console.log(Object.keys(routes));
+
+module.exports = routes;
