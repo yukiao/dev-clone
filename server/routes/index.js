@@ -17,6 +17,4 @@ fs.readdirSync(__dirname)
     routes[name] = route;
   });
 
-console.log(Object.keys(routes));
-
 module.exports = routes;
