@@ -2,7 +2,14 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-const { userRoute, postRoute, likeRoute } = require("./routes");
+const {
+  userRoute,
+  postRoute,
+  likeRoute,
+  commentRoute,
+  tagRoute,
+  postTagRoute,
+} = require("./routes");
 const { notFound, errorHandler } = require("./helpers/errorMiddleware");
 const session = require("cookie-session");
 
@@ -12,7 +19,7 @@ app.use(
   session({
     maxAge: 24 * 60 * 60 * 1000,
     httpOnly: true,
-    keys: ["abooowoa"],
+    keys: [process.env.SESSION_KEY],
   })
 );
 
@@ -29,6 +36,10 @@ if (process.env.NODE_ENV === "development") {
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/likes", likeRoute);
+app.use("/api/comments", commentRoute);
+app.use("/api/tags", tagRoute);
+app.use("/api/postTags", postTagRoute);
+
 app.use(notFound);
 app.use(errorHandler);
 
