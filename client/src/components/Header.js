@@ -6,13 +6,22 @@ import {
   HiOutlineSearch,
 } from "react-icons/hi";
 
-const Header = () => {
+const Header = ({ leftMenuHandler }) => {
+  const handleOpenLeftMenu = (e) => {
+    e.preventDefault();
+    leftMenuHandler(true);
+  };
   return (
     <div className="w-screen flex items-center bg-custom-gray h-14 px-3 py-2 sm:px-6 lg:px-24 justify-between">
       {/* Left Side */}
       <div>
         <div className="mr-5 md:hidden hover:bg-gray-400 p-1 cursor-pointer rounded-full transition-colors duration-500 ease-in-out ">
-          <HiMenu color="white" size={28} className="md:hidden" />
+          <HiMenu
+            color="white"
+            size={28}
+            className="md:hidden"
+            onClick={handleOpenLeftMenu}
+          />
         </div>
       </div>
 
