@@ -22,7 +22,7 @@ const Header = ({ setLeftMenuOpen }) => {
 
   return (
     <>
-      <div className="w-screen flex items-center bg-custom-gray h-14 px-3 py-2 sm:px-6 lg:px-24 justify-between fixed z-20">
+      <div className="w-screen flex items-center bg-custom-gray h-14 px-3 py-2 sm:px-6 lg:px-24 justify-between fixed z-20 top-0">
         {/* Left Side */}
         <div className="flex items-center">
           <div className="mr-5 md:hidden hover:bg-gray-400 flex justify-center items-center w-10 h-10 cursor-pointer rounded-full transition-colors duration-500 ease-in-out ">
