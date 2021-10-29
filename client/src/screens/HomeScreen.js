@@ -7,8 +7,8 @@ const HomeScreen = () => {
 
   return (
     <div>
-      <Header leftMenuHandler={setLeftMenuOpen} />
-      {leftMenuOpen ? <LeftMenu leftMenuHandler={setLeftMenuOpen} /> : null}
+      <Header setLeftMenuOpen={setLeftMenuOpen} />
+      <LeftMenu leftMenuOpen={leftMenuOpen} setLeftMenuOpen={setLeftMenuOpen} />
     </div>
   );
 };
