@@ -7,6 +7,9 @@ module.exports = {
         "custom-black": "#262626",
         "custom-gray": "#313131",
       },
+      spacing: {
+        "05": "2px",
+      },
     },
   },
   variants: {
