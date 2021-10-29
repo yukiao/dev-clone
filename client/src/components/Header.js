@@ -65,7 +65,9 @@ const Header = ({ setLeftMenuOpen }) => {
 
       <div
         className={`fixed ml-auto top-16 rounded-md bg-custom-gray w-64  p-3 right-0 mr-3 sm:mr-6 lg:mr-24 transform ${
-          isDropdownShown ? "translate-y-0" : "-translate-y-96"
+          isDropdownShown
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-96 opacity-0"
         } transition-all duration-200 ease-in-out`}
       >
         <div>
