@@ -2,19 +2,25 @@ import React, { useState } from "react";
 import { HiX } from "react-icons/hi";
 import { FcFilingCabinet, FcHome, FcSurvey } from "react-icons/fc";
 
-const LeftMenu = ({ leftMenuHandler }) => {
+const LeftMenu = ({ leftMenuOpen, setLeftMenuOpen }) => {
   const handleLeftMenuClose = (e) => {
     e.preventDefault();
-    leftMenuHandler(false);
+    setLeftMenuOpen(false);
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <div
-        className="bg-gray-600 opacity-30 w-screen h-screen fixed top-0 bottom-0 right-0 left-0"
+        className={`bg-gray-600 opacity-30 w-screen h-screen fixed z-30 top-0 bottom-0 right-0 left-0 ${
+          leftMenuOpen ? "block" : "hidden"
+        }`}
         onClick={handleLeftMenuClose}
       ></div>
-      <div className="bg-custom-black h-screen w-72 opacity-100 fixed top-0 overflow-y-auto">
+      <div
+        className={`bg-custom-black h-screen w-72 opacity-100 fixed z-30 top-0 overflow-y-auto  transform transition-transform duration-300 ease-in-out ${
+          leftMenuOpen ? "translate-x-0" : "-translate-x-72"
+        }`}
+      >
         {/* Header */}
         <div className="p-5 flex justify-between items-center border-b-2 h-14 border-custom-gray">
           <h1 className="text-white font-bold text-xl">Dev Clone</h1>
