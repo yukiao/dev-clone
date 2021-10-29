@@ -9,10 +9,10 @@ import HeaderSearchBar from "./HeaderSearchBar";
 import LineSeparator from "./LineSeparator";
 
 const Header = ({ setLeftMenuOpen }) => {
-  const [isDropdownShown, setIsShown] = useState(false);
+  const [isDropdownShown, setIsDropdownShown] = useState(false);
 
   const handleDropdownShown = (e) => {
-    setIsShown((prev) => !prev);
+    setIsDropdownShown((prev) => !prev);
   };
 
   const handleOpenLeftMenu = (e) => {
