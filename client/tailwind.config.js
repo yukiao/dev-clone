@@ -9,6 +9,14 @@ module.exports = {
       },
       spacing: {
         "05": "2px",
+        "646px": "646px",
+        "1280px": "1280px",
+      },
+      maxWidth: {
+        "320px": "320px",
+      },
+      minWidth: {
+        "218px": "218px",
       },
     },
   },
