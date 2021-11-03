@@ -6,9 +6,11 @@ import {
   HiOutlineSearch,
 } from "react-icons/hi";
 import HeaderSearchBar from "./HeaderSearchBar";
+import LeftMenu from "./LeftMenu";
 import LineSeparator from "./LineSeparator";
 
-const Header = ({ setLeftMenuOpen }) => {
+const Header = () => {
+  const [leftMenuOpen, setLeftMenuOpen] = useState(false);
   const [isDropdownShown, setIsDropdownShown] = useState(false);
 
   const handleDropdownShown = (e) => {
@@ -22,6 +24,7 @@ const Header = ({ setLeftMenuOpen }) => {
 
   return (
     <>
+      <LeftMenu leftMenuOpen={leftMenuOpen} setLeftMenuOpen={setLeftMenuOpen} />
       <div className="w-screen flex items-center bg-custom-gray h-14 px-3 py-2 sm:px-6 lg:px-24 justify-between fixed z-20 top-0">
         {/* Left Side */}
         <div className="flex items-center">

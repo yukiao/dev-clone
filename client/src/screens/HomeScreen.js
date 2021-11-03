@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { FcFilingCabinet, FcHome, FcSurvey } from "react-icons/fc";
 import ContentPreview from "../components/ContentPreview";
 import Header from "../components/Header";
-import LeftMenu from "../components/LeftMenu";
 
 const HomeScreen = () => {
-  const [leftMenuOpen, setLeftMenuOpen] = useState(false);
-
   return (
     <div>
-      <Header setLeftMenuOpen={setLeftMenuOpen} />
-      <LeftMenu leftMenuOpen={leftMenuOpen} setLeftMenuOpen={setLeftMenuOpen} />
+      <Header />
 
       <div className="py-16">
         <div className="flex pt-5 w-full max-w-screen-xl mx-auto md:px-2 box-border ">
