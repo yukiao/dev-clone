@@ -1,10 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
+import PostButtonGroup from "../components/PostButtonGroup";
 
 const PostScreen = () => {
   return (
     <div>
       <Header />
+      <PostButtonGroup />
       <div className="pt-14">
         <div className="bg-custom-gray">
           <div>
@@ -41,7 +43,11 @@ const PostScreen = () => {
               data your components need. If this data exists, it will be
               provided to your component. If it doesn't, Lore will automatically
               call the required action and inform your component when the data
-              comes back.
+              comes back. Lore provides a simple decorator that allows you to
+              declare what data your components need. If this data exists, it
+              will be provided to your component. If it doesn't, Lore will
+              automatically call the required action and inform your component
+              when the data comes back.
             </div>
           </div>
         </div>
