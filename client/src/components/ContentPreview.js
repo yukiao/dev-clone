@@ -37,7 +37,7 @@ const ContentPreview = () => {
           </div>
 
           <div>
-            <button className="text-sm py-2 px-5 rounded-md bg-gray-400 text-gray-800">
+            <button className="text-sm py-2 px-5 rounded-md bg-gray-400 text-gray-800 hover:bg-gray-500">
               Save
             </button>
           </div>
