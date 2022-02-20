@@ -3,7 +3,8 @@ const { Sequelize, Post, User } = require("../database/models");
 const { SUCCESS } = require("../helpers/const");
 const { ValidationError } = Sequelize;
 const isAuthenticate = require("../helpers/authMiddleware");
-
+const { uploader, dataUri } = require("../config/imageUploader");
+const uploadToCloudinary = require("../helpers/uploadToCloudinary");
 /**
  * @description Create new post
  * @route POST /api/posts/
@@ -132,5 +133,26 @@ router.get("/:username", async (req, res, next) => {
     next(e);
   }
 });
+
+router.post(
+  "/content-image",
+  uploader.single("image"),
+  async (req, res, next) => {
+    if (req.file) {
+      const uri = dataUri(req).content;
+      const result = await uploadToCloudinary(uri, next);
+      if (result.status === SUCCESS) {
+        return res.status(200).json(result);
+      }
+      return res.status(400).json(result);
+    }
+    try {
+      res.status(400);
+      throw new Error("No attachment");
+    } catch (e) {
+      next(e);
+    }
+  }
+);
 
 module.exports = router;

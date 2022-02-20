@@ -2,8 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply text-white;
-  /* @apply overflow-x-hidden; */
-  @apply box-border;
+@layer base {
+  html {
+    @apply text-white;
+    /* @apply overflow-x-hidden; */
+    @apply box-border;
+  }
+
+  h1 {
+    @apply text-4xl;
+    @apply font-bold;
+  }
+  h2 {
+    @apply text-3xl;
+    @apply font-bold;
+  }
+  h3 {
+    @apply text-2xl;
+    @apply font-bold;
+  }
+  h4 {
+    @apply text-xl;
+    @apply font-bold;
+  }
+  h5 {
+    @apply text-lg;
+    @apply font-bold;
+  }
+  h6 {
+    @apply text-base;
+    @apply font-bold;
+  }
+  blockquote {
+    @apply border-l-4;
+    @apply border-gray-300;
+    @apply pl-10;
+    @apply py-0;
+    @apply italic;
+    @apply break-all;
+    @apply w-full;
+    @apply whitespace-normal;
+  }
+  blockquote p {
+    /* @apply break-all; */
+    @apply whitespace-pre-line;
+    @apply w-full;
+    @apply break-normal;
+  }
+  /* pre {
+    @apply bg-gray-500;
+    @apply text-gray-900;
+    @apply p-5 rounded-md;
+  } */
+  p code {
+    @apply p-1;
+    @apply inline-block;
+  }
+  p {
+    @apply whitespace-normal;
+    @apply break-normal;
+    @apply w-full;
+  }
+  pre div {
+    @apply overflow-x-hidden !important;
+    @apply w-full;
+  }
+}
+p code {
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 0.375rem;
+  padding: 2px 2px;
+  font-style: normal;
 }
